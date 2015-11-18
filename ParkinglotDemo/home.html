@@ -1,0 +1,54 @@
+<div ng-controller="ParkinglotCtrl">
+	<h3>Main Board</h3>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Total Space</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="lot in lots">
+					<td>{{lot.name}}</td>
+					<td>{{lot.totalSpace}}</td>
+					<td><a href="#myModal" data-toggle="modal" class="btn btn-warning" ng-click="setLot(lot.id)">Details</a><td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<!--modal to display lane board-->
+		<div class="modal fade" id="myModal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h3 class="modal-title">Lane Board</h3>
+					</div>
+					<div class="modal-body">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Total Space</th>
+									<th>Status</th>
+									<th>Availability</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="lane in selectedLot.lane">
+									<td>{{lane.name}}</td>
+									<td>{{lane.totalSpace}}</td>
+									<td>{{lane.status}}</td>
+									<td>{{lane.availability}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div><!--end modal body-->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
