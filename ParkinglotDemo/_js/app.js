@@ -61,5 +61,82 @@ var lotInfo = [
 				"availability" : 5
 			}
 		]
+	},
+	{
+		"id" : 2,
+		"name" : "lot 3",
+		"totalSpace" : 30,
+		"lane" : [
+			{
+				"id" : 0,
+				"name" : "lane 1",
+				"totalSpace" : 20,
+				"status" : "full",
+				"availability" : 0
+			},
+			{
+				"id" : 1,
+				"name" : "lane 2",
+				"totalSpace" : 10,
+				"status" : "available",
+				"availability" : 5
+			}
+		]
+	},
+	{
+		"id" : 3,
+		"name" : "lot 4",
+		"totalSpace" : 30,
+		"lane" : [
+			{
+				"id" : 0,
+				"name" : "lane 1",
+				"totalSpace" : 10,
+				"status" : "full",
+				"availability" : 0
+			},
+			{
+				"id" : 1,
+				"name" : "lane 2",
+				"totalSpace" : 10,
+				"status" : "available",
+				"availability" : 6
+			},
+			{
+				"id" : 3,
+				"name" : "lane 3",
+				"totalSpace" : 10,
+				"status" : "available",
+				"availability" : 2
+			}
+		]
+	},
+	{
+		"id" : 4,
+		"name" : "lot 5",
+		"totalSpace" : 30,
+		"lane" : [
+			{
+				"id" : 0,
+				"name" : "lane 1",
+				"totalSpace" : 10,
+				"status" : "full",
+				"availability" : 0
+			},
+			{
+				"id" : 1,
+				"name" : "lane 2",
+				"totalSpace" : 10,
+				"status" : "full",
+				"availability" : 0
+			},
+			{
+				"id" : 3,
+				"name" : "lane 3",
+				"totalSpace" : 10,
+				"status" : "available",
+				"availability" : 8
+			}
+		]
 	}
 ];
