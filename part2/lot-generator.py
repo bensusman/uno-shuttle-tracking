@@ -2,47 +2,79 @@ from pymongo import MongoClient
 from random import randint
 
 client = MongoClient('mongodb://root:pacab12345@ds039484.mongolab.com:39484/uno-parking')
-#client = MongoClient('mongodb://ds039484.mongolab.com:39484/uno-parking')
-#client = MongoClient('mongodb://root:pacab12345@ds039484.mongolab.com:39484/')
 
-print(client['uno-parking']['lot'].find()[0])
+json = client['uno-parking']['lots'].find()[0]
 
-lotName="Lot 1"
+for lot in json['lots']:
+	for lane in lot['lanes']:
+		print(lane['availability'])
+
+		availability = randint(0,lane['totalSpace'])
+		lane['availability'] = availability 
+
+		if lane['totalSpace'] == availability:
+			lane['status'] = "full"
+		else:
+			lane['status'] = "available"
+
+rval = client['uno-parking']['lots'].update({},{"$set":json}, upsert=False)
+
+'''
+numLots= 5
 numLanes=10
 laneSize=25
+
+totalSpace = numLanes * laneSize
+'''
 
 """
 {
     "_id": {
         "$oid": "564ad28be4b03655d6ecf475"
     },
-    "lotName": "Lot 1",
-    "lanes": [
+    "lots": [
         {
-            "laneName": "Lane 1",
-            "laneCount": "10"
+            "id": 0,
+            "name": "lot 1",
+            "totalSpace": 20,
+            "lanes": [
+                {
+                    "id": 0,
+                    "name": "lane 1",
+                    "totalSpace": 10,
+                    "status": "full",
+                    "availability": 0
+                },
+                {
+                    "id": 1,
+                    "name": "lane 2",
+                    "totalSpace": 10,
+                    "status": "available",
+                    "availability": 5
+                }
+            ]
         },
         {
-            "laneName": "Lane 2",
-            "laneCount": "15"
+            "id": 1,
+            "name": "lot 2",
+            "totalSpace": 20,
+            "lanes": [
+                {
+                    "id": 0,
+                    "name": "lane 1",
+                    "totalSpace": 10,
+                    "status": "full",
+                    "availability": 0
+                },
+                {
+                    "id": 1,
+                    "name": "lane 2",
+                    "totalSpace": 10,
+                    "status": "available",
+                    "availability": 5
+                }
+            ]
         }
     ]
 }
 """
-
-lot = dict()
-
-lot["_id"] = "349523490r"
-lot["lotName"] = lotName
-
-lanes = list()
-
-for laneNum in range(1,numLanes+1):
-	lane = dict()
-	lane["laneName"] = "Lane " + str(laneNum)
-	lane["laneCount"] = randint(0,laneSize)
-	lanes.append(lane)
-
-lot["lanes"] = lanes
-
-print lot
