@@ -7,8 +7,6 @@ json = client['uno-parking']['lots'].find()[0]
 
 for lot in json['lots']:
 	for lane in lot['lanes']:
-		print(lane['availability'])
-
 		availability = randint(0,lane['totalSpace'])
 		lane['availability'] = availability 
 
