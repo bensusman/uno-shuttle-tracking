@@ -5,6 +5,7 @@
 				<tr>
 					<th>Name</th>
 					<th>Total Space</th>
+					<th>Availability</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -12,6 +13,7 @@
 				<tr ng-repeat="lot in lots">
 					<td>{{lot.name}}</td>
 					<td>{{lot.totalSpace}}</td>
+					<td>{{total(lot.id)}}</td>
 					<td><a href="#lotNumber" data-toggle="modal" class="btn btn-warning" ng-click="setLot(lot.id)">Details</a><td>
 				</tr>
 			</tbody>
@@ -36,7 +38,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-repeat="lane in selectedLot.lane">
+								<tr ng-repeat="lane in selectedLot.lanes">
 									<td>{{lane.name}}</td>
 									<td>{{lane.totalSpace}}</td>
 									<td>{{lane.status}}</td>

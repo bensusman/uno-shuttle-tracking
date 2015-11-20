@@ -1,18 +1,41 @@
 var myApp = angular.module('parkingDemo', []);
+		
 
-myApp.controller('ParkinglotCtrl', function($scope){
-	$scope.lots = lotInfo;
+myApp.controller('ParkinglotCtrl', function($scope, $http){
+	$http.get('https://api.mongolab.com/api/1/databases/uno-parking/collections/lots/?apiKey=NPfFTE_uH7ZPWAhQOfgHhnEg26bUvkIB')
+		.success(function(data){
+			$scope.lots = data[0].lots;
+			console.log($scope.lots);
+		})
+
 	$scope.lotId = 0;
 	$scope.selectedLot = 0;
+	$scope.myid = 0;
 
 	$scope.setLot = function(newValue){
 		$scope.lotId = newValue;
 		$scope.selectedLot = $scope.lots[$scope.lotId];
 	};
 
+	$scope.total = function(q){
+		var total = 0;
+		$scope.myid= q;
+
+		$scope.myselectedLot = $scope.lots[$scope.myid];
+
+        angular.forEach($scope.myselectedLot.lanes, function(s){
+        
+                total+= s.availability;
+         });
+
+        return total;
+	};
 });
 
-var lotInfo = [
+var lotInfo =
+{
+	"id": 234,
+	"lots" :[
 	{
 		"id" : 0,
 		"name" : "lot 1",
@@ -138,5 +161,5 @@ var lotInfo = [
 				"availability" : 8
 			}
 		]
-	}
-];
+	}]
+};
