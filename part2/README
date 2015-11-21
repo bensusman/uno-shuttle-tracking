@@ -1,0 +1,13 @@
+Lot Generator:
+The data for the lot information is stored on MongoLab.com.
+lot-generator.py reads the document from the database and updates the lot availability numbers.
+The lot-generator program runs based on a crontab file.
+
+The contents of the crontab file is (i.e. generate data every minute):
+* * * * * /usr/bin/python /home/ubuntu/workspace/part2/lot-generator.py
+
+UI:
+The webapp is primarily run via angularjs.
+
+The application can be seen at:
+https://parking-display-bensusman.c9users.io/part2/ParkinglotDemo/index.html#

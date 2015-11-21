@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+<title>Parking Lot Assistant</title>
+<style>
+body {background-color:lightblue}
+h1   {color:black}
+p    {color:green}
+</style>
+
+
+	</head>
+
+	<body ng-app="parkingDemo" ng-controller="ParkinglotCtrl">
+	<form>
+
+		<h1>Main Board</h1>
+
+	
+<ul style="list-style-type:circle">
+	<li ng-repeat="lot in lots" >
+	<a ng-href=Lane_page.htm ng-click="setLot(lot.lotID)">
+	{{ lot.name}}
+	</a>
+	<span>
+	{{'--' + lot.totalSpace}}
+	</span>
+	<span>
+	<div class="{total:lot.lane}"> 
+				
+	Total Available space: <span>{{total(	lot.lotId)}}</span>
+
+	</div>
+	</span>
+	</li>
+	</ul> 
+    	
+	
+
+	</form>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+
+	<script src="script2.js"></script>
+	</body>
+</html>
+
+
+

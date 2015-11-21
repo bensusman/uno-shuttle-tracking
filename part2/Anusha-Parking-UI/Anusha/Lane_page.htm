@@ -1,0 +1,38 @@
+<!DOCTYPE html> 
+<head>
+<title>Parking Lot Assistant2</title>
+<style>
+body {background-color:lightgrey}
+h1   {color:blue}
+p    {color:green}
+</style>
+<script src=
+"http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+</head>
+<body>
+<form>
+<h1>LANE BOARD</h1>
+<h2>{{lot.lotId}}</h2>
+<ul style="list-style-type:circle">
+	<li ng-repeat="lane in selectedLot.lane">
+
+	{{'lane name:'+ lane.name}}
+	<span>
+	{{'TotalSpace:'+ lane.totalSpace}}
+	</span>
+	<span>
+	{{'lane Status:'+lane.status}}
+	</span>
+	<span>
+	{{'lane availability:'+lane.availability}}
+	</span>
+
+	</li>
+	</ul> 
+
+</form>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+	<script src="app.js"></script>
+
+</body>
+</html> 
