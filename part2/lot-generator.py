@@ -12,7 +12,7 @@ for lot in json['lots']:
 		availability = randint(0,lane['totalSpace'])
 		lane['availability'] = availability 
 
-		if lane['totalSpace'] == availability:
+		if 0 == availability:
 			lane['status'] = "full"
 		else:
 			lane['status'] = "available"
